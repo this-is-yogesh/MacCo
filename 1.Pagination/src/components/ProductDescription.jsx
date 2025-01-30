@@ -1,5 +1,4 @@
-export const ProductDescription = item => {
-  console.log(item, "br*");
+export const ProductDescription = {item,childPropFunction} => {
   let { item: is } = item;
   return (
     <div>

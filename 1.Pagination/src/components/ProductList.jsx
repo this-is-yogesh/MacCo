@@ -4,20 +4,35 @@ import "../index.css";
 import "../App.css";
 import useGETData from "../hooks/useGETdata";
 import { ProductDescription } from "./ProductDescription";
+import Pagination from "./Pagination";
 
 const ProductList = () => {
   let { data: datas } = useGETData("https://dummyjson.com/products");
   let [searchValue, setSearchValue] = useState("");
   let [searchedData, setSearchedData] = useState(datas);
+  let [totalPages, setTotalPages] = useState([]);
+  let [index,setIndexes] = useState([1,11])
 
   useEffect(() => {
     if (datas) {
-      setSearchedData(datas);
+      setSearchedData(datas.slice(index[0]-1,index[1]));
     }
+    let len = Math.floor(datas?.length / 10);
+    let total = Array.from({ length: len }, (_, i) => i + 1);
+    setTotalPages(total);
   }, [datas]);
 
+  function callback(first, last) {
+    let searchedData = datas.slice(first, last + 1);
+    let arr = [first, last + 1];
+    setIndexes(arr);
+    setSearchedData(searchedData);
+  }
+
+  // let firstIndex = pageNumber * pageLength - pageLength + 1;
+  // let lastIndex = pageNumber * pageLength;
+
   let mappedData = useMemo(() => {
-    console.log("usememo");
     let data = searchedData?.map(item => (
       <div key={item.id} style={{ width: "100%" }}>
         <ProductDescription item={item} />
@@ -27,6 +42,12 @@ const ProductList = () => {
   }, [searchedData, searchValue]);
 
   function handleSearchValue(text) {
+    if (!text.length) {
+      console.log(text, "text**");
+      setSearchValue(text);
+      callback(index[0],index[1]);
+      return
+    }
     setSearchValue(text);
     let searchedData = datas.filter(item => {
       return item.title.toLowerCase().trim().includes(text.toLowerCase());
@@ -55,6 +76,15 @@ const ProductList = () => {
       </div>
       <div style={{ width: "90%", margin: "0px 20px" }}>
         <div style={{ marginTop: 150 }}>{mappedData}</div>
+      </div>
+      <div style={{ width: "90%", margin: "0px 20px" }}>
+        {totalPages.length && (
+          <Pagination
+            data={datas}
+            callback={callback}
+            totalPages={totalPages}
+          />
+        )}
       </div>
     </div>
   );

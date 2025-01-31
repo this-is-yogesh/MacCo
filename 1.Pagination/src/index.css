@@ -12,3 +12,38 @@
   transform: translate(20px, 10%);
   z-index: 1;
 }
+
+
+.pageSmallBox{
+  width: 100;
+  height: 100;
+  border: 1px solid grey;
+  font-size: 20;
+  padding:0 30px;
+  cursor: pointer;
+}
+
+.pageBigBox{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin:0 20px
+}
+
+.righarrow{
+    width: 100;
+  height: 100;
+  border: 1px solid grey;
+  font-size: 20;
+  padding:0 30px;
+  cursor: pointer;
+}
+
+.leftarrow{
+    width: 100;
+  height: 100;
+  border: 1px solid grey;
+  font-size: 20;
+  padding:0 30px;
+  cursor: pointer;
+}

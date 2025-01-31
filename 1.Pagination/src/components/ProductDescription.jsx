@@ -1,7 +1,8 @@
-export const ProductDescription = {item,childPropFunction} => {
+export const ProductDescription = item => {
   let { item: is } = item;
+
   return (
-    <div>
+    <div style={{background:'red'}}>
       <div
         style={{
           display: "flex",
@@ -23,7 +24,7 @@ export const ProductDescription = {item,childPropFunction} => {
             boxShadow: "0 2px 12px orange",
             opacity: 0.9,
             cursor: "pointer",
-            margin:10,
+            margin: 10,
             //outline:'none'
           }}
         >

@@ -5,6 +5,7 @@ export default function useGETData(endpoint) {
   const [data, setData] = useState();
   useEffect(() => {
     getData();
+    console.log('datahook')
   }, []);
 
   async function getData() {
@@ -19,5 +20,5 @@ export default function useGETData(endpoint) {
     }
   }
 
-  return { data: data };
+  return { data: data, setData: setData };
 }

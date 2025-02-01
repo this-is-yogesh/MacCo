@@ -11,11 +11,12 @@ const ProductList = () => {
   let [searchValue, setSearchValue] = useState("");
   let [searchedData, setSearchedData] = useState(datas);
   let [totalPages, setTotalPages] = useState([]);
-  let [index,setIndexes] = useState([1,11])
+  let [index, setIndexes] = useState([1, 11]);
+  let [timeOutId, setTimeOutId] = useState();
 
   useEffect(() => {
     if (datas) {
-      setSearchedData(datas.slice(index[0]-1,index[1]));
+      setSearchedData(datas.slice(index[0] - 1, index[1]));
     }
     let len = Math.floor(datas?.length / 10);
     let total = Array.from({ length: len }, (_, i) => i + 1);
@@ -41,18 +42,35 @@ const ProductList = () => {
     return data;
   }, [searchedData, searchValue]);
 
-  function handleSearchValue(text) {
-    if (!text.length) {
-      console.log(text, "text**");
-      setSearchValue(text);
-      callback(index[0],index[1]);
-      return
-    }
-    setSearchValue(text);
+  let cb = function (text) {
     let searchedData = datas.filter(item => {
       return item.title.toLowerCase().trim().includes(text.toLowerCase());
     });
     setSearchedData(searchedData);
+  };
+  function myDebounce(cb,delay) {
+    let id;
+    console.log('majorid')
+    return function (text) {
+      console.log(id, "id1");
+      clearTimeout(id);
+      id = setTimeout(() => {
+        cb(text);
+        console.log(id, "id2");
+      }, delay);
+    };
+  }
+
+  let debounce = myDebounce(cb, 3000);
+
+  function handleSearchValue(text) {
+    if (!text.length) {
+      setSearchValue(text);
+      callback(index[0], index[1]);
+      return;
+    }
+    setSearchValue(text);
+    debounce(text);
   }
   return (
     <div>

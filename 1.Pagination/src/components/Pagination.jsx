@@ -3,18 +3,10 @@ import { useEffect, useState } from "react";
 export default function Pagination({ data: datas, callback, totalPages }) {
   let [pageNumber, setPageNumber] = useState(1);
   let pageLength = 10;
-
   function changePage(pageNumber) {
-    console.log(pageNumber, "pageNumber");
     if (pageNumber <= 0 || pageNumber > totalPages.length) {
       return;
-      //setPageNumber(pageNumber);
-      // callback(
-      //   pageNumber * pageLength - pageLength + 1,
-      //   pageNumber * pageLength
-      // );
     } else {
-
       setPageNumber(pageNumber);
       callback(
         pageNumber * pageLength - pageLength + 1,

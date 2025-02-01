@@ -40,7 +40,7 @@ const ProductList = () => {
       </div>
     ));
     return data;
-  }, [searchedData, searchValue]);
+  }, [searchValue, searchedData]);
 
   let cb = function (text) {
     let searchedData = datas.filter(item => {
@@ -50,18 +50,15 @@ const ProductList = () => {
   };
   function myDebounce(cb,delay) {
     let id;
-    console.log('majorid')
     return function (text) {
-      console.log(id, "id1");
       clearTimeout(id);
       id = setTimeout(() => {
         cb(text);
-        console.log(id, "id2");
       }, delay);
     };
   }
 
-  let debounce = myDebounce(cb, 3000);
+  let debounce = myDebounce(cb, 1000);
 
   function handleSearchValue(text) {
     if (!text.length) {

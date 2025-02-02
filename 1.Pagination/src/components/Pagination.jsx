@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 export default function Pagination({ data: datas, callback, totalPages }) {
   let [pageNumber, setPageNumber] = useState(1);
   let pageLength = 10;
+  let obj = {};
+  58
   function changePage(pageNumber) {
     if (pageNumber <= 0 || pageNumber > totalPages.length) {
       return;

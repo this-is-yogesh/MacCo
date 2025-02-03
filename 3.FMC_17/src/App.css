@@ -7,7 +7,7 @@
   outline: none;
   outline-offset: 0px;
   color: rgb(128, 66, 0);
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .mainBox > button {
@@ -15,5 +15,11 @@
   outline: none;
   outline-offset: 0px;
   color: rgb(0, 64, 128);
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.playerDiv {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
 }

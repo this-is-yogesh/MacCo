@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  let [sizeProp, setSizeProp] = useState(0);
+  function getRows(index) {
+    let row = Math.floor(index / sizeProp);
+    let col = index % sizeProp;
+    return `${row}${col}`;
+  }
+  useEffect(() => {
+    let boxesContainer = document.querySelector(".boxesContainer");
+    boxesContainer.style.setProperty("--size", sizeProp);
+  }, [sizeProp]);
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <input
+        type="number"
+        value={sizeProp}
+        onChange={e => setSizeProp(e.target.value)}
+      />
+      <div className="outermostContainer">
+        <div className="boxesContainer">
+          {new Array(sizeProp * sizeProp).fill(0).map((box, index) => {
+            return (
+              <div className="box" key={index}>
+                {getRows(index)}
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

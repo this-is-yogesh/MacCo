@@ -6,7 +6,7 @@ function App() {
   function getRows(index) {
     let row = Math.floor(index / sizeProp);
     let col = index % sizeProp;
-    return `${row}${col}`;
+    return [row, col];
   }
   useEffect(() => {
     let boxesContainer = document.querySelector(".boxesContainer");
@@ -22,11 +22,13 @@ function App() {
       <div className="outermostContainer">
         <div className="boxesContainer">
           {new Array(sizeProp * sizeProp).fill(0).map((box, index) => {
-            return (
-              <div className="box" key={index}>
-                {getRows(index)}
-              </div>
-            );
+            let rc = getRows(index);
+            let half = Math.floor(sizeProp / 2);
+            if (rc[0] === half && rc[1] > 0) {
+              return <div key={index}></div>;
+            } else {
+              return <div className="box" key={index}></div>;
+            }
           })}
         </div>
       </div>

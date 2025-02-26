@@ -30,23 +30,18 @@ function App() {
   function triggerReverse() {
     let origianlBoxes = boxesObj.filter(b => !b.nonbox);
     origianlBoxes.sort((a, b) => a["order"] - b["order"]);
-    console.log(origianlBoxes, "origianlBoxesSort");
-    let i = 1;
-    while (i <= origianlBoxes.length) {
-      (function (ind) {
+    for (let obj of origianlBoxes) {
+      let i = obj["order"];
+      (function (i) {
         setTimeout(() => {
-          let arr = origianlBoxes.map(element => {
-            if (element["order"] === ind) {
-              element["clicked"] = false;
-              return element;
-            } else {
-              return element;
-            }
+          setBoxesObj(prevBoxes => {
+            let arr = prevBoxes.map(box =>
+              box.order === i ? { ...box, clicked: false, order: 0 } : box
+            );
+            return arr;
           });
-          console.log(arr, "arr^^", ind);
-          setBoxesObj(arr);
-        }, ind * 1000);
-      })(i++);
+        }, i * 1000);
+      })(i);
     }
   }
   function clickingBox(i) {

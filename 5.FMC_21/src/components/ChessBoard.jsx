@@ -79,7 +79,7 @@ function ChessBoard() {
                   `}
                   onMouseOver={() => hoveringOver(index)}
                 >
-                  {getRowsandCols(index)}
+                  {/* {getRowsandCols(index)} */}
                 </div>
               );
             }

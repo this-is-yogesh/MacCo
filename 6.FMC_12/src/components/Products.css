@@ -1,0 +1,40 @@
+* {
+  background-color: black;
+}
+.image-line {
+  white-space: nowrap;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  cursor: pointer;
+  position: relative;
+  margin-left: 30px;
+  overflow: hidden;
+}
+
+.image-box:hover {
+  background-color: red;
+  opacity: 0.5;
+}
+
+.left-arrow {
+  color: wheat;
+  width: 100px;
+  font-size: 50px;
+  position: absolute;
+  z-index: 1;
+  background: transparent;
+  transform: translate(-10%, 100%);
+}
+
+.right-arrow {
+  color: wheat;
+  width: 100px;
+  font-size: 50px;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  background: transparent;
+  transform: translate(40%, 100%);
+}

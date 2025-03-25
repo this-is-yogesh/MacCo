@@ -1,0 +1,8 @@
+4 boxes of equal size ,each box takes input 
+cursor automatically jumps to next box when input is filled
+when backspace is pressed, input is removed and key jumps back to prev box
+when clicked on lhs of input, the cursor automatically shifts to rhs
+if input is already filled in box then cursor will skip that box
+
+
+problems i am facing :

@@ -8,6 +8,7 @@ function memoizeOne(callBackFn) {
   return function memoizeAdd(...args) {
     let key = JSON.stringify(args);
     if (cacheObject.has(key)) {
+      console.log(cacheObject);
       return cacheObject.get(key);
     } else {
       let result = callBackFn(...args);
@@ -19,7 +20,7 @@ function memoizeOne(callBackFn) {
 const memoizeAdd = memoizeOne(add);
 
 console.time("AddMemoize2");
-memoizeAdd(12, 14);
+console.log(memoizeAdd("s", "t"));
 console.timeEnd("AddMemoize2");
 
 console.time("Add1");

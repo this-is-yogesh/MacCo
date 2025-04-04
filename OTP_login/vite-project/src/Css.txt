@@ -1,0 +1,6 @@
+2.Transisition:
+
+```css
+transition: [property] [duration] [timing-function] [delay];
+
+```

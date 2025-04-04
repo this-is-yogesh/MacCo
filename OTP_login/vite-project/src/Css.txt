@@ -4,3 +4,8 @@
 transition: [property] [duration] [timing-function] [delay];
 
 ```
+
+- **`property`**: The CSS property to which the transition is applied. Using **`all`** applies the transition to all properties.
+- **`duration`**: The time it takes for the transition to complete. For example, **`0.2s`** means 200 milliseconds.
+- **`timing-function`**: Defines the speed curve of the transition. Common values include **`ease`**, **`linear`**, **`ease-in`**, **`ease-out`**, and custom cubic-bezier functions.
+- **`delay`**: The time to wait before starting the transition. For example, **`0.1s`** means a 100-millisecond delay.

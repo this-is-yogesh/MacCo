@@ -9,3 +9,13 @@ transition: [property] [duration] [timing-function] [delay];
 - **`duration`**: The time it takes for the transition to complete. For example, **`0.2s`** means 200 milliseconds.
 - **`timing-function`**: Defines the speed curve of the transition. Common values include **`ease`**, **`linear`**, **`ease-in`**, **`ease-out`**, and custom cubic-bezier functions.
 - **`delay`**: The time to wait before starting the transition. For example, **`0.1s`** means a 100-millisecond delay.
+
+
+### **Common Easing Functions**
+
+- **`ease`**: Default value. Starts slow, speeds up, then slows down,Equivalent to **`cubic-bezier(0.25, 0.1, 0.25, 1)`**.
+- **`linear`**: Constant speed,Equivalent to **`cubic-bezier(0, 0, 1, 1)`**
+- **`ease-in`**: Starts slow, then speeds up,Equivalent to **`cubic-bezier(0.42, 0, 1, 1)`**.
+- **`ease-out`**: Starts fast, then slows down,Equivalent to **`cubic-bezier(0, 0, 0.58, 1)`**
+- **`ease-in-out`**: Starts slow, speeds up, then slows down,Equivalent to **`cubic-bezier(0.42, 0, 0.58, 1)`**.
+

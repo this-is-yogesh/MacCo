@@ -63,3 +63,63 @@ transition: [property] [duration] [timing-function] [delay];
 </body>
 </html>
 
+```
+
+### **Explanation**
+
+- **`.parent`**: The parent container is given **`relative`** positioning and flexbox properties to center its content.
+- **`*.icon`: Both the `Sun` and `Moon` icons are given `absolute` positioning with `top: 50%` and `left: 50%` to position their top-left corners at the center of the parent. The `transform: translate(-50%, -50%)` then moves the icons back by half of thdeir own width and height, effectively centering them within the parent.***
+- **`.sun` and `.moon`**: The **`Sun`** and **`Moon`** icons are given specific transformations and transitions to create the desired effect.
+
+4.Focus-ring
+
+- **`focus-visible:ring-0`**: Removes the ring (outline) around an element when it receives focus via keyboard navigation.
+- **`focus-visible:ring-offset-0`**: Removes the offset (space) between the element and its ring when it receives focus via keyboard navigation.
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d0a38f4e-20ff-4acc-b1fa-4734474b37d9/ff432de1-3792-4c03-a655-c945528a9dc4/image.png)
+
+- **`outline: none;`**: Removes the outline (equivalent to **`ring-0`**).
+- **`box-shadow: none;`**: Removes any box shadow that might act as a ring offset (equivalent to **`ring-offset-0`**).
+
+margin : auto, // aligns the element in center with respect to the parent
+
+background: linear-gradient(to bottom, #171717, #f9fafb);
+
+display:grid 
+
+```jsx
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); //Creates three equal-width 
+  //columns using the fr unit, which stands for "fraction of the available space."
+  grid-template-rows: repeat(2, 100px);//Creates two rows, each 100px tall
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  grid-template-rows: 50px auto;
+}
+/*
+1fr 200px: The first column takes up the remaining space (1fr),
+ and the second column is fixed at 200px.
+50px auto: The first row is 50px tall, and the second row adjusts
+ its height based on the content (auto).
+*/
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-rows: auto;
+}
+repeat(auto-fit, minmax(150px, 1fr)):
+ Creates a responsive grid where columns adjust based on available space. 
+ Each column is at least 150px wide and can grow to take up equal 
+ fractions of the remaining space.
+auto: Rows adjust their height based on the content.
+
+```
+
+1.aspect-ratio: 3/2; // to keep h and w   of img consistent 
+
+object-fit: contain; // img will not stretch;mix-blend-mode : color-burn // to remove background from behind the image

@@ -159,34 +159,24 @@
     \newsavebox\ANDbox
     \sbox\ANDbox{$|$}
 
-    \begin{header}
+  \begin{header}
+    \begin{flushleft}
         \fontsize{25 pt}{25 pt}\selectfont Yogesh Singh
+
+        \vspace{8 pt}
+
+        \normalsize
+        \faPhone\ \href{tel:+918102308447}{+91-8102308447}  \hspace{8 pt}
+        \faEnvelope\ \href{mailto:ayogesh1214@gmail.com}{ayogesh1214@gmail.com} \\
 
         \vspace{5 pt}
 
-        \normalsize
-        \mbox{Your Location}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{mailto:youremail@yourdomain.com}{youremail@yourdomain.com}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{tel:+90-541-999-99-99}{0541 999 99 99}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{https://yourwebsite.com/}{yourwebsite.com}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{https://linkedin.com/in/yourusername}{linkedin.com/in/yourusername}}%
-        \kern 5.0 pt%
-        \AND%
-        \kern 5.0 pt%
-        \mbox{\hrefWithoutArrow{https://github.com/yourusername}{github.com/yourusername}}%
-    \end{header}
+        \faLinkedin\ \href{https://www.linkedin.com/in/your-linkedin}{LinkedIn} \quad
+        \faGithub\ \href{https://github.com/your-github}{GitHub} \quad
+        \faMedium\ \href{https://medium.com/@your-medium}{Medium} \quad
+        \faGlobe\ \href{https://your-portfolio.com}{Portfolio}
+    \end{flushleft}
+\end{header}
 
     \vspace{5 pt - 0.3 cm}
 

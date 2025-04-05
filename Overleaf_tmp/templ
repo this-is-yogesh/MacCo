@@ -3,10 +3,10 @@
 % Packages:
 \usepackage[
     ignoreheadfoot, % set margins without considering header and footer
-    top=2 cm, % seperation between body and page edge from the top
-    bottom=2 cm, % seperation between body and page edge from the bottom
-    left=2 cm, % seperation between body and page edge from the left
-    right=2 cm, % seperation between body and page edge from the right
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
     footskip=1.0 cm, % seperation between body and footer
     % showframe % for debugging 
 ]{geometry} % for adjusting page geometry
@@ -261,47 +261,21 @@
 
 
     
-    \section{Skills}
+\section{Skills}
 
-
-
-        
-        \begin{twocolentry}{
-            June 2005 – Aug 2007
-        }
-            \textbf{Software Engineer}, Apple -- Cupertino, CA\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Reduced time to render user buddy lists by 75\% by implementing a prediction algorithm
-                \item Integrated iChat with Spotlight Search by creating a tool to extract metadata from saved chat transcripts and provide metadata to a system-wide search database
-                \item Redesigned chat file format and implemented backward compatibility for search
-            \end{highlights}
-        \end{onecolentry}
-
-
-        \vspace{0.2 cm}
-
-        \begin{twocolentry}{
-            June 2003 – Aug 2003
-        }
-            \textbf{Software Engineer Intern}, Microsoft -- Redmond, WA\end{twocolentry}
-
-        \vspace{0.10 cm}
-        \begin{onecolentry}
-            \begin{highlights}
-                \item Designed a UI for the VS open file switcher (Ctrl-Tab) and extended it to tool windows
-                \item Created a service to provide gradient across VS and VS add-ins, optimizing its performance via caching
-                \item Built an app to compute the similarity of all methods in a codebase, reducing the time from $\mathcal{O}(n^2)$ to $\mathcal{O}(n \log n)$
-                \item Created a test case generation tool that creates random XML docs from XML Schema
-                \item Automated the extraction and processing of large datasets from legacy systems using SQL and Perl scripts
-            \end{highlights}
-        \end{onecolentry}
-
-
-
-    
+\noindent
+\begin{tabular}{p{0.5\textwidth} p{0.5\textwidth}}
+    % Left Column
+    \textbf{Languages:} Javascript, HTML, CSS, Typescript &
+    \textbf{Mobile Development:} React Native \\
+    \textbf{Version Control:} Git &
+       \textbf{Database Caching:} Redis \\
+    % Right Column
+    \textbf{Frameworks:} Expo, React.js, Next.js &
+    \textbf{Containerisation:} Docker \\
+    \textbf{Backend As-a-Service:} Convex, Supabase &
+    \textbf{Toolkit:} Zustand, Tanstack Query \\
+\end{tabular}
     \section{Hackathons}
 
 

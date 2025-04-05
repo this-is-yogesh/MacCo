@@ -34,6 +34,7 @@
 \usepackage{ifthen} % for conditional statements
 \usepackage{needspace} % for avoiding page brake right after the section title
 \usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{tikz} % for drawing the timeline
 
 % Ensure that generate pdf is machine readable/ATS parsable:
 \ifPDFTeX
@@ -200,21 +201,40 @@
     
     \section{Experience}
 
-    \begin{onecolentry}
-        \begin{highlightsforbulletentries}
+\begin{tikzpicture}[x=1cm, y=-0.9cm] % Invert y-axis to make positioning easier
+    % Draw the vertical line
+    %\draw[line width=1pt] (0,0) -- (0,7);
+    \draw[line width=1pt] (0,-1.1) -- (0,7.5);
 
+    % Draw the experience nodes with circles
+    \filldraw[black] (0,-1) circle (3pt);
+    \node[anchor=west] at (0.2, 0.5) {
+        \begin{minipage}{\textwidth}
+            \textbf{Presto - Software Engineer G2} \\
+            \textit{Feb 2024 - Present \quad 1 year 2 months}
+            \begin{itemize}
+                \item Led development of an advanced automation system, achieving a 15\% increase in operational efficiency.
+                \item Streamlined manufacturing processes, reducing production costs by 10\%.
+                \item Implemented preventive maintenance strategies, resulting in a 20\% decrease in equipment downtime.
+            \end{itemize}
+        \end{minipage}
+    };
 
-        \item Each section title is arbitrary and each section contains a list of entries.
+    \filldraw[black] (0,4) circle (3pt);
+    \node[anchor=west] at (0.2, 5.5) {
+        \begin{minipage}{\textwidth}
+            \textbf{Jalinfoway - Software Engineer} \\
+            \textit{Jan 2023 - Feb 2024 \quad 1 year 2 months}
+            \begin{itemize}
+                \item Designed and optimized a robotic control system, realizing a 12\% performance improvement.
+                \item Coordinated testing and validation, ensuring compliance with industry standards.
+                \item Provided technical expertise, contributing to a 15\% reduction in system failures.
+            \end{itemize}
+        \end{minipage}
+    };
 
-        \item There are 7 unique entry types: \textit{BulletEntry}, \textit{TextEntry}, \textit{EducationEntry}, \textit{ExperienceEntry}, \textit{NormalEntry}, \textit{PublicationEntry}, and \textit{OneLineEntry}.
-
-        \item Select a section title, pick an entry type, and start writing your section!
-
-        \item \href{https://docs.rendercv.com/user_guide/}{Here}, you can find a comprehensive user guide for RenderCV.
-
-
-        \end{highlightsforbulletentries}
-    \end{onecolentry}
+    % Add more nodes as needed
+\end{tikzpicture}
 
     \section{Projects}
 

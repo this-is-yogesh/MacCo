@@ -201,17 +201,19 @@
     
     \section{Experience}
 
-\begin{tikzpicture}[x=1cm, y=-0.9cm] % Invert y-axis to make positioning easier
+\begin{tikzpicture}[x=1cm, y=-0.7cm] % Invert y-axis to make positioning easier
     % Draw the vertical line
     %\draw[line width=1pt] (0,0) -- (0,7);
-    \draw[line width=1pt] (0,-1.1) -- (0,7.5);
+    \draw[line width=1pt] (0,-1.55) -- (0,7.5);
 
     % Draw the experience nodes with circles
-    \filldraw[black] (0,-1) circle (3pt);
+    \filldraw[black] (0,-1.4) circle (3pt);
     \node[anchor=west] at (0.2, 0.5) {
-        \begin{minipage}{\textwidth}
-            \textbf{Presto - Software Engineer G2} \\
-            \textit{Feb 2024 - Present \quad 1 year 2 months}
+        \begin{minipage}{\textwidth}            
+        \begin{tabular}{p{0.8\textwidth} r} % Use a table with two columns
+            \textbf{Presto - Software Engineer G2} & \textit{1 year 2 months} \\
+            \textit{Feb 2024 - Present} & \\
+        \end{tabular}
             \begin{itemize}
                 \item Led development of an advanced automation system, achieving a 15\% increase in operational efficiency.
                 \item Streamlined manufacturing processes, reducing production costs by 10\%.
@@ -220,11 +222,13 @@
         \end{minipage}
     };
 
-    \filldraw[black] (0,4) circle (3pt);
+    \filldraw[black] (0,3.7) circle (3pt);
     \node[anchor=west] at (0.2, 5.5) {
         \begin{minipage}{\textwidth}
-            \textbf{Jalinfoway - Software Engineer} \\
-            \textit{Jan 2023 - Feb 2024 \quad 1 year 2 months}
+        \begin{tabular}{p{0.8\textwidth} r} % Use a table with two columns
+            \textbf{Jaiinfoway - Software Engineer} & \textit{1 year 2 months} \\
+            \textit{January 2023 - Feb 2024} & \\
+        \end{tabular}
             \begin{itemize}
                 \item Designed and optimized a robotic control system, realizing a 12\% performance improvement.
                 \item Coordinated testing and validation, ensuring compliance with industry standards.

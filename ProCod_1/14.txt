@@ -1,0 +1,74 @@
+Q.if var is function scoped and we cannot access it outside the function then why we tell it as global scoped variable
+
+
+
+Awesome question — this is where terminology can be a bit confusing in JavaScript.
+
+Let’s break it down and **clear the confusion around `var` and global scope**.
+
+---
+
+### ✅ First, what does “function-scoped” mean?
+
+When we say:
+
+```js
+function test() {
+  var a = 10;
+}
+console.log(a); // ❌ ReferenceError
+```
+
+👉 `var a` is **not accessible outside the function**. That’s what **function-scoped** means — `var` is limited to the function in which it's declared.
+
+---
+
+### ✅ Now, what about **global-scoped**?
+
+When you declare `var` **outside any function**, it becomes a **global variable**:
+
+```js
+var x = 42;
+
+function printX() {
+  console.log(x); // ✅ 42
+}
+```
+
+Here, `x` is declared **in the global scope**, so any function can access it.
+
+---
+
+### 🔁 So why do people say "`var` is global scoped"?
+
+They don’t actually mean `var` is **always** global — they mean:
+
+> ❗ When `var` is declared **outside a function**, it is **attached to the global object** (like `window` in browsers), unlike `let` and `const`.
+
+```js
+var foo = "bar";
+console.log(window.foo); // ✅ "bar"
+```
+
+But:
+
+```js
+let baz = "qux";
+console.log(window.baz); // ❌ undefined
+```
+
+---
+
+### 🧠 TL;DR
+
+| Keyword | Scope type     | Hoisted? | Added to `window` in browser? |
+|---------|----------------|----------|-------------------------------|
+| `var`   | Function-scoped | Yes ✅    | Yes ✅ (if declared globally) |
+| `let`   | Block-scoped    | Yes ❗️   | No ❌                         |
+| `const` | Block-scoped    | Yes ❗️   | No ❌                         |
+
+> `var` is **function-scoped**, but **if declared outside a function**, it behaves as a **global variable** and is accessible globally (even attached to `window` in browsers).
+
+---
+
+Let me know if you want to see visual examples for `var`, `let`, and `const` side by side 👀

@@ -182,21 +182,10 @@
     \vspace{5 pt - 0.3 cm}
 
 
-    \section{Summary}
-
-
-
-        
+    \section{Summary}        
         \begin{onecolentry}
-            \href{https://rendercv.com}{RenderCV} is a LaTeX-based CV/resume version-control and maintenance app. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{Markdown syntax support} and \textbf{complete control over the LaTeX code}.
+       Frontend Developer with 2+ years of experience who likes crafting intuitive user experiences and build products that either solves real business problems or are simply fun to create.
         \end{onecolentry}
-
-        \vspace{0.2 cm}
-
-        \begin{onecolentry}
-            The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowell-cv}{Gayle McDowell}.
-        \end{onecolentry}
-
 
     
     \section{Experience}
@@ -211,17 +200,17 @@
     \node[anchor=west] at (0.2, 0.5) {
         \begin{minipage}{\textwidth}            
         \begin{tabular}{p{0.8\textwidth} r} % Use a table with two columns
-            \textbf{Presto - Software Engineer G2} & \textit{1 year 2 months} \\
+            \textbf{Presto - Software Engineer G2} \\
             \textit{Feb 2024 - Present} & \\
         \end{tabular}
             \begin{itemize}
-                \item Led development of an advanced automation system, achieving a 15\% increase in operational efficiency.
-                \item Streamlined manufacturing processes, reducing production costs by 10\%.
-                \item Implemented preventive maintenance strategies, resulting in a 20\% decrease in equipment downtime.
+                \item Took accountability of products, made sure to deliver it under the deadline, 
+                \item Took accountability of products, made sure to deliver it under the deadline, 
+                \item Took account
             \end{itemize}
         \end{minipage}
     };
-
+    
     \filldraw[black] (0,3.7) circle (3pt);
     \node[anchor=west] at (0.2, 5.5) {
         \begin{minipage}{\textwidth}
@@ -241,20 +230,20 @@
 \end{tikzpicture}
 
     \section{Projects}
-
-
-
-        
-        \begin{twocolentry}{
-            Sept 2000 – May 2005
-        }
-            \textbf{University of Pennsylvania}, BS in Computer Science\end{twocolentry}
-
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
                 \item GPA: 3.9/4.0 (\href{https://example.com}{a link to somewhere})
                 \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
+                                \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
+            \end{highlights}
+        \end{onecolentry}
+       \vspace{0.20 cm}
+                \begin{onecolentry}
+            \begin{highlights}
+                \item GPA: 3.9/4.0 (\href{https://example.com}{a link to somewhere})
+                \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
+                       \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
             \end{highlights}
         \end{onecolentry}
 

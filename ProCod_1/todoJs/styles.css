@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px 0px;
+  font-weight: 100;
+}
+
+
+.item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:10px;
+
+}
+
+.item > span{
+  font-size: 22px;
+}

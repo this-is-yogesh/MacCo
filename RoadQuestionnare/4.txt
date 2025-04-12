@@ -1,0 +1,78 @@
+### Event Bubbling
+
+**Definition:** Event bubbling is a mechanism in the DOM (Document Object Model) where an event starts at the target element and then "bubbles up" through the DOM tree, triggering any event listeners attached to its ancestor elements along the way. This allows multiple elements to respond to the same event.
+
+**Example:**
+
+Consider a webpage with a button inside a div. If you click the button, the click event will first trigger on the button, then on the div, and so on up to the document level.
+
+```html
+<div id="parent">
+    <button id="child">Click me</button>
+</div>
+
+<script>
+    document.getElementById('child').addEventListener('click', function() {
+        console.log('Button clicked');
+    });
+
+    document.getElementById('parent').addEventListener('click', function() {
+        console.log('Div clicked');
+    });
+</script>
+```
+
+When you click the button, you'll see both "Button clicked" and "Div clicked" in the console because the event bubbles up from the button to the div.
+
+### Stopping Event Bubbling
+
+To stop event bubbling, you can use the `stopPropagation()` method of the event object. This prevents the event from propagating further up the DOM tree.
+
+**Example:**
+
+```html
+<div id="parent">
+    <button id="child">Click me</button>
+</div>
+
+<script>
+    document.getElementById('child').addEventListener('click', function(event) {
+        console.log('Button clicked');
+        event.stopPropagation(); // Stops the event from bubbling up to the div
+    });
+
+    document.getElementById('parent').addEventListener('click', function() {
+        console.log('Div clicked');
+    });
+</script>
+```
+
+In this example, clicking the button will only log "Button clicked" because `stopPropagation()` prevents the event from reaching the div.
+
+### Giving Priority to Elements in Event Bubbling
+
+To give priority to certain elements in event bubbling, you can use event capturing. Event capturing is the opposite of event bubbling, where the event starts at the top of the DOM tree and works its way down to the target element.
+
+You can add an event listener with the `capture` option set to `true` to handle the event during the capturing phase.
+
+**Example:**
+
+```html
+<div id="parent">
+    <button id="child">Click me</button>
+</div>
+
+<script>
+    document.getElementById('parent').addEventListener('click', function() {
+        console.log('Div clicked - Capturing phase');
+    }, true); // Capturing phase
+
+    document.getElementById('child').addEventListener('click', function(event) {
+        console.log('Button clicked - Bubbling phase');
+    });
+</script>
+```
+
+In this example, "Div clicked - Capturing phase" will be logged first because the event listener on the div is set to capture the event before it reaches the button.
+
+By understanding and utilizing event bubbling, stopping propagation, and capturing, you can control the flow of events in your web applications effectively.

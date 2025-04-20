@@ -4,35 +4,97 @@ body {
   padding: 0;
 }
 
-.boxContainer {
-  max-width: 500px;
-  transform: translateY(0px);
+header {
+  font-size: 23px;
+  padding: 15px 0px 0px 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.inputContainer{
+.boxContainer {
+  padding: 10px;
+}
+
+.inputContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: red;
-}
-.inputContainer > button {
-  width: 100px;
-  height: 30px;
-  cursor: pointer;
+  gap: 10px;
 }
 
-#inputItem {
-  width: 200px;
+.addItemButton {
+  background-color: transparent;
+  border: none;
+  font-family: "Lucida Sans";
+  font-weight: 100;
+  text-align: center;
   height: 25px;
+  width: 25px;
+  font-size: 14px;
+}
+
+.addItemButton2 {
+  background-color: transparent;
+  border: none;
+  font-family: "Lucida Sans";
+  font-weight: 100;
+  text-align: center;
+  height: 25px;
+  width: 25px;
   font-size: 20px;
-  margin-right: 10px;
 }
 
-#inputItem:focus-visible {
+.plusAddTask #addTask {
+  color: #4a4141;
+  margin-left: 10px;
+}
+
+.plusAddTask:hover > button {
+  background-color: #dc4c3e;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: white;
+}
+
+.plusAddTask:hover #addTask {
+  cursor: pointer;
+  color: #dc4c3e;
+}
+
+.inputTaskElement:focus-visible {
   outline: none;
+  font-size: 20px;
+  border: none;
 }
 
-header{
-  font-size: 23px;
-  padding: 15px 0px 0px 15px;
+.inputTaskElement {
+  border: none;
+  font-size: 15px;
+  width: 100%;
 }
+
+/*
+1.how can we have two different items to behave differently when hovered on its parent element
+
+.inputContainer:hover > button {
+}
+
+.inputContainer:hover #addTask {
+}
+
+2.what is immediate child > and non immediate children
+immediate child is > button, both 1 and 2 are immediate children <div><button1><button2></div> but if outside div then not immediate children
+
+3.how can we immediately focus inside input box without having to click inside ? focus()method 
+
+4.which event to tigger to get keyboard event ?
+keydown event
+
+5.how to get value from input in typscript ?
+(event.target as HTMLInputElement).value
+
+6.how to remove child elements and add new one or add new with existing ones?
+parentElement.replaceChildren(newElement, ...parentElement.children)
+
+*/

@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.header_app {
+  text-align: center;
+  font-size: 34px;
+  text-decoration: underline;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 30px;
+}
+
+.main_app {
+  padding-left: 30px;
+}
+
+.tab_app {
+  display: flex;
+  flex-direction: row;
+  max-width: 30%;
+  justify-content: space-between;
+}
+
+.task_body_tab_element1 {
+  margin-top: 30px;
+}
+
+.plusAddTask_tab_element1 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.plusAddTask_tab_element1 > button {
+  width: 20px;
+  height: 20px;
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+}
+
+.plusAddTask_tab_element1:hover > button {
+  background-color: #dc4c3e;
+  color: white;
+  cursor: pointer;
+}
+
+.plusAddTask_tab_element1:hover > label {
+  color: #dc4c3e;
+  cursor: pointer;
+}

@@ -74,6 +74,54 @@ header {
   width: 100%;
 }
 
+.showTaskElement {
+  padding: 2px 5px;
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+.showTaskElement > label {
+  font-size: 20px;
+}
+.showTaskElementContainer {
+  margin-top: 20px;
+}
+
+.iconsContainer {
+  flex: 1;
+  text-align: end;
+}
+
+.deleteIcon {
+  transition: transform 0.3s ease-in-out;
+}
+.deleteIcon:hover {
+  transform: scale(1.5);
+}
+.labelElement {
+  border: none;
+  font-size: 14px;
+  outline: none;
+}
+
+.showTaskElement input[type="checkbox"]::after {
+  content: "✔";
+  visibility: hidden;
+}
+.showTaskElement input[type="checkbox"]:checked::after {
+  visibility: visible;
+  background-color: wheat;
+  text-decoration: line-through;
+}
+
+.strike-through {
+  text-decoration: line-through;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  
+}
+
 /*
 1.how can we have two different items to behave differently when hovered on its parent element
 

@@ -16,7 +16,7 @@
   padding-left: 30px;
 }
 
-.tab_app {
+.tab_bar {
   display: flex;
   flex-direction: row;
   max-width: 30%;
@@ -35,6 +35,14 @@
   justify-content: center;
   gap: 10px;
   cursor: pointer;
+}
+
+.hidden{
+  display: none;
+}
+
+.visible{
+  display: block;
 }
 
 .plusAddTask_tab_element1 > button {

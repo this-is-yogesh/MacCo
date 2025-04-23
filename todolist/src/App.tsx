@@ -10,6 +10,18 @@ function App() {
     inputElement.current?.focus();
   }
 
+  function showPlusAddTask(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      sethidePlusAdd(false);
+    }
+  }
+
+  useEffect(() => {
+    if (hidePlusAdd && inputElement.current) {
+
+      inputElement.current.focus();
+    }
+  }, [hidePlusAdd]);
 
   return (
     <div>

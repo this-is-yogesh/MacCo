@@ -37,12 +37,38 @@
   cursor: pointer;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.visible{
+.visible {
   display: block;
+}
+
+.hoveredItem{
+  background-color: rgb(232, 226, 226);
+}
+
+.task_list {
+  margin-top: 10px;
+  width: 200px;
+}
+.task_item {
+  padding: 1px 0px;
+  cursor: pointer;
+  display: flex;
+}
+
+
+
+.task_item > label {
+  width: 100%;
+  overflow: hidden;
+}
+.task_item > input,
+label {
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 .plusAddTask_tab_element1 > button {

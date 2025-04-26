@@ -25,21 +25,14 @@ export default function TasKElement() {
   const [currentTaskValue, setCurrentTaskValue] = useState<string>("");
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const [editTask, setEditTask] = useState<number>(-1);
-  const editRef = useRef<HTMLInputElement>(null);
+  //const editRef = useRef<HTMLInputElement>(null);
 
   const memoizedTasks = useMemo(() => {
     return tasks;
   }, [tasks]);
 
   useEffect(() => {
-    if (hidePlusAdd && inputElement.current) {
-      inputElement.current.focus();
-    }
-  }, [hidePlusAdd, editTask]);
-
-  useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      console.log(currentTaskValue.length, "length");
       if (
         inputElement.current &&
         !inputElement.current.contains(event.target as Node) &&
@@ -55,27 +48,17 @@ export default function TasKElement() {
     };
   }, [hidePlusAdd, currentTaskValue]);
 
-  useEffect(() => {
-    editRef.current?.focus();
-  }, [editTask, tasks, hoveredIndex]);
-
+  //on Enter click : KeyboardEvent<HTMLInputElement>
   function showPlusAddTask(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
-      const newTaskAdded = [
-        ...memoizedTasks,
-        {
-          taskName: currentTaskValue,
-          taskCompleted: false,
-        },
-      ];
-      saveToStorage("key", newTaskAdded);
-      setTasks(prev => [
-        ...prev,
-        {
-          taskName: currentTaskValue,
-          taskCompleted: false,
-        },
-      ]);
+      setTasks(prev => {
+        const newTaskList = [
+          ...prev,
+          { taskName: currentTaskValue, taskCompleted: false },
+        ];
+        saveToStorage("key", newTaskList);
+        return newTaskList;
+      });
       setCurrentTaskValue("");
       sethidePlusAdd(false);
     }
@@ -92,35 +75,32 @@ export default function TasKElement() {
 
   function onMouseLeaveFunction() {
     setHoveredIndex(-1);
-    setEditTask(-1)
+    setEditTask(-1);
   }
 
+  //onChange event : ChangeEvent<HTMLInputElement>
   function addInputToTask(event: ChangeEvent<HTMLInputElement>): void {
     const value = event.target.value;
     setCurrentTaskValue(value);
   }
 
   function markTaskComplete(index: number): void {
-    const currentTasks = memoizedTasks.map((item, i) => {
-      if (i === index) {
-        return { ...item, taskCompleted: !item.taskCompleted };
-      }
-      return item;
+    setTasks(prev => {
+      const updatedTasks = prev.map((item, i) =>
+        i === index ? { ...item, taskCompleted: !item.taskCompleted } : item
+      );
+      saveToStorage("key", updatedTasks);
+      console.log(updatedTasks, "currentTasks");
+      return updatedTasks;
     });
-    setTasks(currentTasks);
-    saveToStorage("key", currentTasks);
-    console.log(currentTasks, "currentTasks");
   }
 
   function deleteTask(index: number): void {
-    console.log("deleteTask");
-    const filteredTask = memoizedTasks.filter((_, i) => {
-      if (i === index) return false;
-      return true;
+    setTasks(prev => {
+      const filteredTask = prev.filter((_, i) => (i === index ? false : true));
+      saveToStorage("key", filteredTask);
+      return filteredTask;
     });
-
-    setTasks(filteredTask);
-    saveToStorage("key", filteredTask);
   }
 
   function editThisTask(index: number): void {
@@ -130,15 +110,13 @@ export default function TasKElement() {
   function editInputOfTask(event: ChangeEvent<HTMLInputElement>): void {
     const value = event.target.value;
     console.log(value, "value**");
-    const editedTasks = memoizedTasks.map((item, index) => {
-      if (index === editTask) {
-        return { ...item, taskName: value };
-      }
-      return item;
+    setTasks(prev => {
+      const editedTasks = prev.map((item, index) =>
+        index === editTask ? { ...item, taskName: value } : item
+      );
+      saveToStorage("key", editedTasks);
+      return editedTasks;
     });
-    setTasks(editedTasks);
-    saveToStorage('key',editedTasks)
-    //console.log(value,)
   }
 
   return (
@@ -161,7 +139,10 @@ export default function TasKElement() {
         >
           <input
             value={currentTaskValue}
-            ref={inputElement}
+            ref={el => {
+              if (el) el.focus();
+              inputElement.current = el;
+            }}
             onChange={event => addInputToTask(event)}
             onKeyDown={event => showPlusAddTask(event)}
           />
@@ -184,7 +165,12 @@ export default function TasKElement() {
               onClick={() => markTaskComplete(index)}
             />
             <input
-              ref={editRef}
+              ref={el => {
+                if (editTask === index && el) {
+                  console.log(el, "el**");
+                  el.focus();
+                }
+              }}
               onChange={event => editInputOfTask(event)}
               className="label"
               value={item?.taskName}
@@ -213,6 +199,7 @@ export default function TasKElement() {
           </div>
         ))}
       </div>
+      <div className="completed_task_list"></div>
     </div>
   );
 }

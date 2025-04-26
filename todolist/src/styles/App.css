@@ -45,28 +45,38 @@
   display: block;
 }
 
-.hoveredItem{
+#tab_element_1 {
+  width:70%;
+}
+
+.hoveredItem {
   background-color: rgb(232, 226, 226);
 }
 
 .task_list {
   margin-top: 10px;
-  width: 200px;
+  width: auto;
 }
 .task_item {
   padding: 1px 0px;
   cursor: pointer;
   display: flex;
+
 }
 
+.label {
+  border: none;
+  offset: none;
+  outline: none;
+}
 
-
-.task_item > label {
+.task_item,
+.label {
   width: 100%;
   overflow: hidden;
 }
 .task_item > input,
-label {
+.label {
   margin-right: 5px;
   cursor: pointer;
 }

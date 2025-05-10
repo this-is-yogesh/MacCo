@@ -4,7 +4,6 @@ import {
   useRef,
   useEffect,
   ChangeEvent,
-  useMemo,
 } from "react";
 import "../styles/App.css";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -19,17 +18,14 @@ interface Task {
 export default function TasKElement() {
   const [hidePlusAdd, sethidePlusAdd] = useState<boolean>(false);
   const inputElement = useRef<HTMLInputElement>(null);
-  const [getValueFromLocalStorage, saveToStorage] = useLocalStorage<Task>();
+  const [getValueFromLocalStorage, saveToStorage] = useLocalStorage<Task[]>();
   const items: Task[] = getValueFromLocalStorage("key");
+  const completedItems: Task[] = getValueFromLocalStorage("completed");
   const [tasks, setTasks] = useState<Task[]>(items);
   const [currentTaskValue, setCurrentTaskValue] = useState<string>("");
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const [editTask, setEditTask] = useState<number>(-1);
-  //const editRef = useRef<HTMLInputElement>(null);
-
-  const memoizedTasks = useMemo(() => {
-    return tasks;
-  }, [tasks]);
+  const [completedTask, setCompletedTask] = useState<Task[]>(completedItems);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -85,14 +81,39 @@ export default function TasKElement() {
   }
 
   function markTaskComplete(index: number): void {
-    setTasks(prev => {
-      const updatedTasks = prev.map((item, i) =>
-        i === index ? { ...item, taskCompleted: !item.taskCompleted } : item
-      );
-      saveToStorage("key", updatedTasks);
-      console.log(updatedTasks, "currentTasks");
-      return updatedTasks;
-    });
+    const currentTask = [...tasks];
+    const completedTask = {
+      ...currentTask[index],
+      taskCompleted: !currentTask[index].taskCompleted,
+    };
+
+    const updatedTasks = currentTask.filter((_, i) => i !== index);
+    setTasks(updatedTasks);
+    if (completedTask) {
+      setCompletedTask(prev => {
+        const updatedTasks = [...prev, completedTask];
+        saveToStorage("completed", updatedTasks);
+        return updatedTasks;
+      });
+    }
+  }
+
+  function markTaskInComplete(index: number): void {
+    const currentTask = [...completedTask];
+    console.log(currentTask, "currentTask",index);
+    const incompletedTask = {
+      ...currentTask[index],
+      taskCompleted: !currentTask[index].taskCompleted,
+    };
+
+    const updatedTasks = currentTask.filter((_, i) => i !== index);
+    setCompletedTask(updatedTasks);
+    if (incompletedTask) {
+      setTasks(prev => {
+        const updatedTasks = [...prev, incompletedTask];
+        return updatedTasks;
+      });
+    }
   }
 
   function deleteTask(index: number): void {
@@ -149,7 +170,7 @@ export default function TasKElement() {
         </div>
       </div>
       <div className="task_list">
-        {memoizedTasks.map((item, index) => (
+        {tasks.map((item, index) => (
           <div
             key={index}
             className={`task_item ${
@@ -199,7 +220,19 @@ export default function TasKElement() {
           </div>
         ))}
       </div>
-      <div className="completed_task_list"></div>
+      <div className="completed_task_list">
+        <h3>Completed Tasks {completedTask?.length > 0 || ""}</h3>
+        {completedTask.map((item, index) => (
+          <div className="completed_task_item" key={item?.taskName + index}>
+            <input
+              type="checkbox"
+              checked={item?.taskCompleted}
+              onClick={() => markTaskInComplete(index)}
+            />
+            <label>{item?.taskName}</label>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

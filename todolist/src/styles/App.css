@@ -100,3 +100,8 @@
   color: #dc4c3e;
   cursor: pointer;
 }
+
+
+.completed_task_list{
+  margin-top: 20px;
+}

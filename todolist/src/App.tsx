@@ -6,9 +6,6 @@ function App() {
       <main className="main_app">
         <div className="tab_bar">
           <TasKElement />
-          <div id="tab_element_2">
-            <h3>Liked Task</h3>
-          </div>
         </div>
       </main>
     </div>

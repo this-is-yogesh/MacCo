@@ -4,11 +4,13 @@ import {
   useRef,
   useEffect,
   ChangeEvent,
+  DragEventHandler,
 } from "react";
 import "../styles/App.css";
 import useLocalStorage from "../hooks/useLocalStorage";
 import deleteSvg from "../../src/assets/delete.svg";
 import editSvg from "../../src/assets/edit.svg";
+import hoverSvg from "../../src/assets/hover.svg";
 
 interface Task {
   taskName: string;
@@ -26,6 +28,7 @@ export default function TasKElement() {
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const [editTask, setEditTask] = useState<number>(-1);
   const [completedTask, setCompletedTask] = useState<Task[]>(completedItems);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -84,11 +87,12 @@ export default function TasKElement() {
     const currentTask = [...tasks];
     const completedTask = {
       ...currentTask[index],
-      taskCompleted: !currentTask[index].taskCompleted,
+      taskCompleted: true,
     };
 
     const updatedTasks = currentTask.filter((_, i) => i !== index);
     setTasks(updatedTasks);
+    saveToStorage("key", updatedTasks);
     if (completedTask) {
       setCompletedTask(prev => {
         const updatedTasks = [...prev, completedTask];
@@ -100,17 +104,19 @@ export default function TasKElement() {
 
   function markTaskInComplete(index: number): void {
     const currentTask = [...completedTask];
-    console.log(currentTask, "currentTask",index);
+    console.log(currentTask, "currentTask", index);
     const incompletedTask = {
       ...currentTask[index],
-      taskCompleted: !currentTask[index].taskCompleted,
+      taskCompleted: false,
     };
 
     const updatedTasks = currentTask.filter((_, i) => i !== index);
     setCompletedTask(updatedTasks);
+    saveToStorage("completed", updatedTasks);
     if (incompletedTask) {
       setTasks(prev => {
         const updatedTasks = [...prev, incompletedTask];
+        saveToStorage("key", updatedTasks);
         return updatedTasks;
       });
     }
@@ -140,6 +146,36 @@ export default function TasKElement() {
     });
   }
 
+  function hoverSelectedItem(index: number): void {
+    console.log(index, "index*");
+  }
+
+  function handleDragOver(e: React.DragEvent<HTMLDivElement>, index: number) {
+    console.log("dragIndex", index);
+    e.preventDefault(); // Needed to allow drop
+  }
+
+  function handlDrop(e: React.DragEvent<HTMLDivElement>, dropIndex: number) {
+    console.log("dragDrop", dropIndex);
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === dropIndex) return;
+
+    const updatedTasks = [...tasks];
+    const draggedItem = updatedTasks[draggedIndex];
+    updatedTasks.splice(draggedIndex, 1);
+    updatedTasks.splice(dropIndex, 0, draggedItem);
+
+    setTasks(updatedTasks);
+    setDraggedIndex(null);
+  }
+
+  function handleDragStart(
+    e: React.DragEvent<HTMLImageElement>,
+    index: number
+  ) {
+    setDraggedIndex(index);
+    console.log("dragStart", index);
+  }
   return (
     <div id="tab_element_1">
       <h3>To Do List</h3>
@@ -178,7 +214,18 @@ export default function TasKElement() {
             }`}
             onMouseEnter={() => onMouseEnterFunction(index)}
             onMouseLeave={onMouseLeaveFunction}
+            onDrop={e => handlDrop(e, index)}
+            onDragOver={e => handleDragOver(e, index)}
           >
+            <img
+              src={hoverSvg}
+              height={25}
+              width={25}
+              alt="hoverIcon"
+              draggable={true}
+              onDragStart={e => handleDragStart(e, index)}
+              onClick={() => hoverSelectedItem(index)}
+            />
             <input
               type="checkbox"
               checked={item?.taskCompleted}

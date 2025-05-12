@@ -46,7 +46,7 @@
 }
 
 #tab_element_1 {
-  width:70%;
+  width: 70%;
 }
 
 .hoveredItem {
@@ -61,7 +61,6 @@
   padding: 1px 0px;
   cursor: pointer;
   display: flex;
-
 }
 
 .label {
@@ -101,7 +100,12 @@
   cursor: pointer;
 }
 
-
-.completed_task_list{
+.completed_task_list {
   margin-top: 20px;
 }
+
+.completed_task_item {
+  text-decoration: line-through;
+
+}
+

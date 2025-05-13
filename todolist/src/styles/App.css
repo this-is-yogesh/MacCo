@@ -103,9 +103,15 @@
 .completed_task_list {
   margin-top: 20px;
 }
-
+.completed_task_body {
+  margin-top: 10px;
+}
 .completed_task_item {
   text-decoration: line-through;
-
+  padding: 2px 0px;
+  display: flex;
+  gap:5px
 }
-
+.completed_task_item > input{
+cursor: pointer;
+}

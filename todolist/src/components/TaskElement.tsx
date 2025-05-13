@@ -4,13 +4,13 @@ import {
   useRef,
   useEffect,
   ChangeEvent,
-  DragEventHandler,
 } from "react";
 import "../styles/App.css";
 import useLocalStorage from "../hooks/useLocalStorage";
 import deleteSvg from "../../src/assets/delete.svg";
 import editSvg from "../../src/assets/edit.svg";
 import hoverSvg from "../../src/assets/hover.svg";
+import { ColorMatchPuzzle } from "./Puzzle";
 
 interface Task {
   taskName: string;
@@ -158,7 +158,10 @@ export default function TasKElement() {
   function handlDrop(e: React.DragEvent<HTMLDivElement>, dropIndex: number) {
     console.log("dragDrop", dropIndex);
     e.preventDefault();
-    if (draggedIndex === null || draggedIndex === dropIndex) return;
+    if (draggedIndex === null || draggedIndex === dropIndex) {
+      console.log("returning");
+      return;
+    }
 
     const updatedTasks = [...tasks];
     const draggedItem = updatedTasks[draggedIndex];
@@ -220,6 +223,7 @@ export default function TasKElement() {
             <img
               src={hoverSvg}
               height={25}
+              style={{ cursor: "grab" }}
               width={25}
               alt="hoverIcon"
               draggable={true}
@@ -229,6 +233,7 @@ export default function TasKElement() {
             <input
               type="checkbox"
               checked={item?.taskCompleted}
+              draggable={true}
               onChange={() => {}}
               onClick={() => markTaskComplete(index)}
             />
@@ -269,16 +274,18 @@ export default function TasKElement() {
       </div>
       <div className="completed_task_list">
         <h3>Completed Tasks {completedTask?.length > 0 || ""}</h3>
-        {completedTask.map((item, index) => (
-          <div className="completed_task_item" key={item?.taskName + index}>
-            <input
-              type="checkbox"
-              checked={item?.taskCompleted}
-              onClick={() => markTaskInComplete(index)}
-            />
-            <label>{item?.taskName}</label>
-          </div>
-        ))}
+        <div className="completed_task_body">
+          {completedTask.map((item, index) => (
+            <div className="completed_task_item" key={item?.taskName + index}>
+              <input
+                type="checkbox"
+                checked={item?.taskCompleted}
+                onClick={() => markTaskInComplete(index)}
+              />
+              <label>{item?.taskName}</label>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

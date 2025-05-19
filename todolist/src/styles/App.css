@@ -53,10 +53,6 @@
   background-color: rgb(232, 226, 226);
 }
 
-.task_list {
-  margin-top: 10px;
-  width: auto;
-}
 .task_item {
   padding: 1px 0px;
   cursor: pointer;
@@ -110,8 +106,39 @@
   text-decoration: line-through;
   padding: 2px 0px;
   display: flex;
-  gap:5px
+  gap: 5px;
 }
-.completed_task_item > input{
-cursor: pointer;
+.completed_task_item > input {
+  cursor: pointer;
+}
+
+.accordian_container {
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.task_list {
+  margin-top: 10px;
+  width: auto;
+  background-color: white;
+  transition: background-color 5s ease;
+}
+
+
+.accoridan_heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.accoridan_heading > img {
+  cursor: pointer;
+}
+
+.showAcc {
+  display: block;
+}
+.hideAcc {
+  display: none;
 }

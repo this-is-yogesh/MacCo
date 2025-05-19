@@ -1,15 +1,11 @@
-import {
-  KeyboardEvent,
-  useState,
-  useRef,
-  useEffect,
-  ChangeEvent,
-} from "react";
+import { KeyboardEvent, useState, useRef, useEffect, ChangeEvent } from "react";
 import "../styles/App.css";
 import useLocalStorage from "../hooks/useLocalStorage";
 import deleteSvg from "../../src/assets/delete.svg";
 import editSvg from "../../src/assets/edit.svg";
 import hoverSvg from "../../src/assets/hover.svg";
+import upArrow from "../../src/assets/upArrow.svg";
+import downArrow from "../../src/assets/downArrow.svg";
 import { ColorMatchPuzzle } from "./Puzzle";
 
 interface Task {
@@ -29,6 +25,7 @@ export default function TasKElement() {
   const [editTask, setEditTask] = useState<number>(-1);
   const [completedTask, setCompletedTask] = useState<Task[]>(completedItems);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [accordianShow, setAccordianShow] = useState<boolean | null>(false);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -179,6 +176,7 @@ export default function TasKElement() {
     setDraggedIndex(index);
     console.log("dragStart", index);
   }
+
   return (
     <div id="tab_element_1">
       <h3>To Do List</h3>
@@ -192,6 +190,19 @@ export default function TasKElement() {
           <button>+</button>
           <label>Add Task</label>
         </div>
+        <div className="accordian_container">
+          <div className="accoridan_heading">
+            <h4>Pending Tasks</h4>
+            <img
+              src={accordianShow ? downArrow : upArrow}
+              width={15}
+              height={15}
+              alt={accordianShow ? "down" : "up"}
+              onClick={() => setAccordianShow(!accordianShow)}
+            />
+          </div>
+        </div>
+
         <div
           className={`input_tab_element1 ${
             hidePlusAdd ? "visible" : "hidden"
@@ -208,7 +219,9 @@ export default function TasKElement() {
           />
         </div>
       </div>
-      <div className="task_list">
+      <div
+        className={`${"task_list"} ${accordianShow ? "showAcc" : "hideAcc"}`}
+      >
         {tasks.map((item, index) => (
           <div
             key={index}

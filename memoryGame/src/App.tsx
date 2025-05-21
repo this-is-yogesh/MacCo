@@ -41,7 +41,17 @@ function App() {
     setNumberArray(arr);
   }
 
-
+  function clickBox(index: number) {
+    if (selectedBox && selectedBox2) {
+      setSelectedBox2(null);
+      setSelectedBox(null);
+    }
+    if (selectedBox) {
+      setSelectedBox2(index);
+    } else {
+      setSelectedBox(index);
+    }
+  }
 
   return (
     <div>

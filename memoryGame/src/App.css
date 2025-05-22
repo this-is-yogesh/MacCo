@@ -1,0 +1,79 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.headingMemory {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 2rem;
+}
+
+.gridsize_container {
+  display: inline-block;
+}
+.gridsize_container > span {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.gridsize_container > input {
+  height: 30px;
+  width: 50px;
+  margin: 0px 0px 0px 10px;
+  padding-left: 5px;
+  font-size: 15px;
+}
+
+.gridsize_container > input:focus-visible {
+  outline-color: grey;
+  outline-width: 1rem;
+}
+
+.grid_boxes_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.grid_boxes_outer {
+  display: grid;
+
+  gap: 5px;
+  height: auto;
+  width: auto;
+}
+
+.box_body {
+  width: 100px;
+  height: 100px;
+  background-color: #d6dbdf;
+  border-radius: 20%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font: 1em sans-serif;
+}
+
+.reset_game_container {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.reset_game_container > button {
+  height: 40px;
+  width: auto;
+  font-size: 15px;
+  color: white;
+  background-color: #1fa052;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding:0px 20px
+}
+
+.selected_box{
+  background-color: green;
+}

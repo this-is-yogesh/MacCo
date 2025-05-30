@@ -60,7 +60,7 @@ class MyPromise {
 const promise1 = new MyPromise((resolve, reject) => {
   resolve(1);
   reject(3);
-  // Ignored
+
   console.log("hello");
   setTimeout(() => {
     console.log("insideTimeout");

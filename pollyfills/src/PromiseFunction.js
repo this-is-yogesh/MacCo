@@ -25,5 +25,12 @@ MyPromise.prototype.then = thenCallback => {
   }
 };
 
+const promise = new MyPromise((resolve, reject) => {
+  resolve(1);
+});
 
+promise
+  .then(val => {
+    console.log(val);
+  })
 

@@ -1,0 +1,3 @@
+1.what is rem , how different from px
+2.how to identify event in typescript - onChange is React.ChangeEvent, onClick is React.MouseEvent 
+3.what is outline color, outline width on focus-visible

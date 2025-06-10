@@ -1,0 +1,67 @@
+.outer_main_box {
+  width: "100%";
+  height: 100vh;
+  text-align: center;
+}
+.verticalSpacing {
+  width: 100%;
+  height: 60px;
+}
+.main_box {
+  width: 80%;
+  height: 400px;
+  margin: auto;
+  border: 0.5px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left_main_box,
+.right_main_box {
+  width: 45%;
+  border-bottom-width: 0px;
+  border-top-width: 0px;
+  border-color: black;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left_main_box {
+  border-right-width: 0.1px;
+  border-left-width: 0px;
+}
+
+.right_main_box {
+  border-left-width: 0.1px;
+  border-right-width: 0px;
+}
+
+.center_main_box {
+  width: 10%;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.center_main_box > button {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.left_list {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.list_item {
+  text-align: left;
+  width: 100px;
+  margin: auto;
+}

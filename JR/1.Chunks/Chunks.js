@@ -1,37 +1,35 @@
-//chunk([1,2,3,4,5],1)
+let a = chunk([1, 2, 3, 4, 5], 1);
+console.log(a);
 //output : [[1],[2],[3],[4],[5]]
 
-//chunk([1,2,3,4,5],2)
+let b = chunk([1, 2, 3, 4, 5], 2);
+console.log(b);
 //output : [[1,2],[3,4],[5]]
 
-//chunk([1,2,3,4,5],3)
+let c = chunk([1,2,3,4,5],3)
+console.log(c)
 //output : [[1,2,3],[4,5]]
 
-//chunk([1,2,3,4,5],4)
+let d = chunk([1, 2, 3, 4, 5], 4);
+console.log(d);
 //output : [[1,2,3,4],[5]]
 
-//chunk([1,2,3,4,5],5)
+let e = chunk([1,2,3,4,5],5)
+console.log(e)
 //output : [[1,2,3,4,5]]
 
+//best way to declare array in javascript ?
+//
+
 function chunk(arr, size) {
-  if(!size){
-    return arr;
-  }
-  let resultArray = [];
+  const finalArray = new Array();
+  if (!size) return arr;
   let i = 0;
   while (i < arr.length) {
-    let j = 0;
-    let subArray = [];
-    while (j < size) {
-      subArray.push(arr[i]);
-      j++;
-      i++;
-    }
-    
-    resultArray.push(subArray.filter((item)=>item))
+    finalArray.push(arr.slice(i, i + size));
+    i += size;
   }
-
-  return resultArray
+  return finalArray;
 }
 
-console.log(chunk([1, 2, 3, 4, 5], 2));
+//chunk([1, 2, 3, 4, 5], 4);

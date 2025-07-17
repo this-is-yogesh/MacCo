@@ -18,9 +18,6 @@ let e = chunk([1,2,3,4,5],5)
 console.log(e)
 //output : [[1,2,3,4,5]]
 
-//best way to declare array in javascript ?
-//
-
 function chunk(arr, size) {
   const finalArray = new Array();
   if (!size) return arr;
